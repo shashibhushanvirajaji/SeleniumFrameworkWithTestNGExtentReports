@@ -15,7 +15,7 @@ import com.listeners.RetryAnalyzerListener;
 public final class WebShopTest extends BaseClassTest{
 	 
 	
-	@Test()
+	@Test(description = "loginpagetest")
 	public void loginPage_LoginTest(Map<String, String> data) throws Exception 
 	{		
 		WebShopLoginPage wslp = new WebShopLoginPage();
@@ -25,7 +25,7 @@ public final class WebShopTest extends BaseClassTest{
 		.isEqualToIgnoringCase("duck creek technologies");
 	}
 	
-	@Test()
+	@Test(description = "newtest")
 	public void NewTest(Map<String, String> data) throws Exception 
 	{		
 		WebShopLoginPage wslp = new WebShopLoginPage();

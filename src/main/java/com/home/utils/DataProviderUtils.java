@@ -24,7 +24,6 @@ public final class DataProviderUtils {
 		}
 		List<Map<String, String>> toBeExecutedList =  new ArrayList<>();
 
-
 		for(int i=0;i<list.size();i++) {
 			if(list.get(i).get("testcasename").equalsIgnoreCase(testCaseName) && 
 				list.get(i).get("Run").equalsIgnoreCase("yes"))

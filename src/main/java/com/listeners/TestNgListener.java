@@ -19,7 +19,7 @@ public class TestNgListener implements ITestListener, ISuiteListener{
 		  try {
 			ExtentReporter.initializeReports();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 	    }
@@ -29,10 +29,8 @@ public class TestNgListener implements ITestListener, ISuiteListener{
 	    	try {
 				ExtentReporter.flushReports();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	    }
@@ -45,7 +43,7 @@ public class TestNgListener implements ITestListener, ISuiteListener{
 	@Override  
 	public void onTestSuccess(ITestResult result) {  
 		ExtentLogger.pass(result.getMethod().getMethodName() + " is passed ");
-	
+		ELKUtils.postResultsToELK(result.getMethod().getDescription(), "pass");
 	}  
 	  
 	@Override  
@@ -54,27 +52,26 @@ public class TestNgListener implements ITestListener, ISuiteListener{
 	//	ExtentLogger.fail(result.getMethod().getMethodName() + " is failed "+ result.getThrowable().getMessage());
 		try {
 			ExtentLogger.fail(result.getMethod().getMethodName() + " is failed "+ result.getThrowable().getMessage(),
-					true);			
+					true);		
+			ELKUtils.postResultsToELK(result.getMethod().getDescription(), "fail");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}  
 	  
 	@Override  
 	public void onTestSkipped(ITestResult result) {  
-		ExtentLogger.skip(result.getMethod().getMethodName());		
+		ExtentLogger.skip(result.getMethod().getMethodName());
+		ELKUtils.postResultsToELK(result.getMethod().getDescription(), "skip");
 	}  
 	  
 	@Override  
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {  
-	// TODO Auto-generated method stub  
 	System.out.println("Failure of test cases and its details are : "+result.getName());  
 	}  
 	  
 	@Override  
 	public void onStart(ITestContext context) {  
-	System.out.println(" from onStart method");
 	}  
 	  
 	@Override  

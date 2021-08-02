@@ -17,10 +17,8 @@ public class AnnotationListener implements IAnnotationTransformer {
 	public void transform(
 
 			ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
-
 				annotation.setDataProvider("getTestData");
 				annotation.setDataProviderClass(DataProviderUtils.class);
 				annotation.setRetryAnalyzer(RetryAnalyzerListener.class);
-
 	}
 }

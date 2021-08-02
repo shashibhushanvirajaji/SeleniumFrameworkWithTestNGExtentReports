@@ -10,8 +10,8 @@
 	</listeners>
 
 	<test name="Test" thread-count="3" parallel="methods">
-		<classes>		
-			<class name="com.home.tests.WebShopTest" />
+		<classes>
+			<class name="com.home.tests.WebShopTest" />			
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
